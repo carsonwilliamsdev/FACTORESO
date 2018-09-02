@@ -1,4 +1,9 @@
 ## Title: FACTORESO
+## Author: BAWITDABAW
+## Description: my personal addon, use at own risk.
 ## APIVersion: 100024; Wolfhunter
+## SavedVariables: FooAddonSavedVariables
+## Version: 0.1
 
+FACTORESO.xml
 FACTORESO.lua
