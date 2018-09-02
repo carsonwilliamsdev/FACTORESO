@@ -2,7 +2,7 @@
 ## Author: BAWITDABAW
 ## Description: my personal addon, use at own risk.
 ## APIVersion: 100024; Wolfhunter
-## SavedVariables: FooAddonSavedVariables
+## SavedVariables: FACTORESOSavedVariables
 ## Version: 0.1
 
 FACTORESO.xml
