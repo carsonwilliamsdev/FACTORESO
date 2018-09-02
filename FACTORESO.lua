@@ -1,13 +1,13 @@
 FACTORESO = {}
-FooAddon.name = "FACTORESO"
+FACTORESO.name = "FACTORESO"
 
-function FooAddon:Initialize()
+function FACTORESO:Initialize()
 end
 
-function FooAddon.OnAddOnLoaded(event, addonName)
-    if addonName == FooAddon.name then
-    FooAddon:Initialize()
+function FACTORESO.OnAddOnLoaded(event, addonName)
+    if addonName == FACTORESO.name then
+        FACTORESO:Initialize()
     end
 end
 
-EVENT_MANAGER:RegisterForEvent(FooAddon.name, EVENT_ADD_ON_LOADED, FooAddon.OnAddOnLoaded)
+EVENT_MANAGER:RegisterForEvent(FACTORESO.name, EVENT_ADD_ON_LOADED, FACTORESO.OnAddOnLoaded)
