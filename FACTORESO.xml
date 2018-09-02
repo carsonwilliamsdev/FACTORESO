@@ -1,12 +1,16 @@
 <GuiXml>
   <Controls>
-      <TopLevelControl name="FACTORESOIndicator" mouseEnabled="true" movable="true" clampedToScreen="true">
+    <TopLevelControl name="FACTORESOIndicator" mouseEnabled="true" movable="true" clampedToScreen="true">
       <Dimensions x="200" y="25" />
       <Anchor point="BOTTOM" relativeTo="GuiRoot" relativePoint="CENTER" offsetY="-20" />
  
+      <OnMoveStop>
+        FACTORESO.OnIndicatorMoveStop()
+      </OnMoveStop>
+ 
       <Controls>
         <Label name="$(parent)Label" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="FF0000"
-            wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER" text="http://twitch.tv/realBAWITDABAW/">
+            wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER" text="http://twitch.tv/realBAWITDABAW">
           <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
         </Label>
       </Controls>
