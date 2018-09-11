@@ -3,7 +3,7 @@ FACTORESO.name = "FACTORESO"
 
 function FACTORESO:Initialize()
     self.savedVariables = ZO_SavedVars:New("FACTORESOSavedVariables", 1, nil, {})
-    self:RestorePosition()
+    SCENE_MANAGER:RegisterTopLevel(FACTORESO_Main, false)
 end
 
 function FACTORESO.OnAddOnLoaded(event, addonName)
@@ -12,17 +12,8 @@ function FACTORESO.OnAddOnLoaded(event, addonName)
     end
 end
 
-function FACTORESO.OnIndicatorMoveStop()
-    FACTORESO.savedVariables.left = FACTORESOIndicator:GetLeft()
-    FACTORESO.savedVariables.top = FACTORESOIndicator:GetTop()
+function FACTORESO.ShowMain()
+    SCENE_MANAGER:ToggleTopLevel(FACTORESO_Main)
 end
-
-function FACTORESO:RestorePosition()
-    local left = self.savedVariables.left
-    local top = self.savedVariables.top
-   
-    FACTORESOIndicator:ClearAnchors()
-    FACTORESOIndicator:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, left, top)
-  end
 
 EVENT_MANAGER:RegisterForEvent(FACTORESO.name, EVENT_ADD_ON_LOADED, FACTORESO.OnAddOnLoaded)

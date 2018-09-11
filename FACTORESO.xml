@@ -1,19 +1,32 @@
 <GuiXml>
-  <Controls>
-    <TopLevelControl name="FACTORESOIndicator" mouseEnabled="true" movable="true" clampedToScreen="true">
-      <Dimensions x="200" y="25" />
-      <Anchor point="BOTTOM" relativeTo="GuiRoot" relativePoint="CENTER" offsetY="-20" />
- 
-      <OnMoveStop>
-        FACTORESO.OnIndicatorMoveStop()
-      </OnMoveStop>
- 
-      <Controls>
-        <Label name="$(parent)Label" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="FF0000"
-            wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER" text="http://twitch.tv/realBAWITDABAW">
-          <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
-        </Label>
-      </Controls>
-    </TopLevelControl>
-  </Controls>
+    <Controls>
+        <Backdrop name="FACTORESO_ButtonBg" alpha="0" centerColor="40FF0000" edgeColor="60FF0000" clampedToScreen="true" movable="true" mouseEnabled="true">
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GuiRoot" offsetX="50" offsetY="100"/>
+            <Dimensions x="70" y="70"/>
+            <Edge edgeSize="1"/>
+            <OnInitialized>self:SetParent(ZO_MainMenu)</OnInitialized>
+            <OnMouseEnter>WINDOW_MANAGER:SetMouseCursor(MOUSE_CURSOR_PAN);self:SetAlpha(1)</OnMouseEnter>
+            <OnMouseExit>WINDOW_MANAGER:SetMouseCursor(MOUSE_CURSOR_DO_NOT_CARE);self:SetAlpha(0)</OnMouseExit>
+            <OnMouseUp></OnMouseUp>
+        </Backdrop>
+        <Button name="FACTORESO_Button" topmost="true">
+            <Anchor point="CENTER" relativePoint="CENTER" relativeTo="FACTORESO_ButtonBg"/>
+            <Dimensions x="50" y="50"/>
+            <OnInitialized>self:SetParent(ZO_MainMenu)</OnInitialized>
+            <Textures normal="FACTORESO/FACTORBUTTON.dds"/>
+            <OnClicked>FACTORESO.ShowMain()</OnClicked>
+            <OnMouseUp></OnMouseUp>
+        </Button>
+        <TopLevelControl name="FACTORESO_Main" hidden="true" clampedToScreen="true" movable="true" mouseEnabled="true" allowBringToTop="true">
+            <Anchor point="CENTER" relativePoint="CENTER" relativeTo="GuiRoot"/>
+            <Dimensions x="500" y="300"/>
+            <OnMouseUp></OnMouseUp>
+            <Controls>
+                <Backdrop name="FACTORESO_MainBackground" centerColor="111111" edgeColor="00000000">
+                    <AnchorFill/>
+                    <Edge edgeSize="1"/>
+                </Backdrop>
+            </Controls>
+        </TopLevelControl>
+    </Controls>
 </GuiXml>
