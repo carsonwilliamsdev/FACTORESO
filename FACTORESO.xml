@@ -7,7 +7,7 @@
             <OnInitialized>self:SetParent(ZO_MainMenu)</OnInitialized>
             <OnMouseEnter>WINDOW_MANAGER:SetMouseCursor(MOUSE_CURSOR_PAN);self:SetAlpha(1)</OnMouseEnter>
             <OnMouseExit>WINDOW_MANAGER:SetMouseCursor(MOUSE_CURSOR_DO_NOT_CARE);self:SetAlpha(0)</OnMouseExit>
-            <OnMouseUp></OnMouseUp>
+            <OnMouseUp>FACTORESO.StorePosition(self)</OnMouseUp>
         </Backdrop>
         <Button name="FACTORESO_Button" topmost="true">
             <Anchor point="CENTER" relativePoint="CENTER" relativeTo="FACTORESO_ButtonBg"/>
@@ -15,12 +15,11 @@
             <OnInitialized>self:SetParent(ZO_MainMenu)</OnInitialized>
             <Textures normal="FACTORESO/FACTORBUTTON.dds"/>
             <OnClicked>FACTORESO.ShowMain()</OnClicked>
-            <OnMouseUp></OnMouseUp>
         </Button>
         <TopLevelControl name="FACTORESO_Main" hidden="true" clampedToScreen="true" movable="true" mouseEnabled="true" allowBringToTop="true">
             <Anchor point="CENTER" relativePoint="CENTER" relativeTo="GuiRoot"/>
             <Dimensions x="500" y="300"/>
-            <OnMouseUp></OnMouseUp>
+            <OnMouseUp>FACTORESO.StorePosition(self)</OnMouseUp>
             <Controls>
                 <Backdrop name="FACTORESO_MainBackground" centerColor="111111" edgeColor="00000000">
                     <AnchorFill/>
