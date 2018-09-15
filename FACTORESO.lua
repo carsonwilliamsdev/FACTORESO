@@ -33,13 +33,27 @@ end
 
 
 function FACTORESO.InitPositions()
+    -- menu
     local mainpos = FACTORESO.savedVariables[FACTORESO_Main:GetName()]
     FACTORESO_Main:ClearAnchors()
-    FACTORESO_Main:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, mainpos[1], mainpos[2])
+    local mainleft = 0
+    local maintop = 0
+    if mainpos ~= nil then
+        mainleft = mainpos[1]
+        maintop = mainpos[2]
+    end
+    FACTORESO_Main:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, mainleft, maintop)
 
+    -- button
     local buttonpos = FACTORESO.savedVariables[FACTORESO_ButtonBg:GetName()]
     FACTORESO_ButtonBg:ClearAnchors()
-    FACTORESO_ButtonBg:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, buttonpos[1], buttonpos[2])
+    local buttonleft = 0
+    local buttontop = 0
+    if buttonpos ~= nil then
+        buttonleft = buttonpos[1]
+        buttontop = buttonpos[2]
+    end
+    FACTORESO_ButtonBg:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, buttonleft, buttontop)
 end
 
 EVENT_MANAGER:RegisterForEvent(FACTORESO.name, EVENT_ADD_ON_LOADED, FACTORESO.OnAddOnLoaded)
