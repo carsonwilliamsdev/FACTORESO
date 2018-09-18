@@ -5,6 +5,23 @@ function FACTORESO:Initialize()
     self.savedVariables = ZO_SavedVars:New("FACTORESOSavedVariables", 1, nil, {})
     SCENE_MANAGER:RegisterTopLevel(FACTORESO_Main, false)
     FACTORESO.InitPositions()
+    EVENT_MANAGER:RegisterForEvent(self.name, EVENT_COMBAT_EVENT, self.OnCombat)
+
+    FACTORESO.playerName = GetUnitName("player")
+
+    FACTORESO.damages = {}
+    FACTORESO.damages[DAMAGE_TYPE_COLD] = 0
+    FACTORESO.damages[DAMAGE_TYPE_DISEASE] = 0
+    FACTORESO.damages[DAMAGE_TYPE_DROWN] = 0
+    FACTORESO.damages[DAMAGE_TYPE_EARTH] = 0
+    FACTORESO.damages[DAMAGE_TYPE_FIRE] = 0
+    FACTORESO.damages[DAMAGE_TYPE_GENERIC] = 0
+    FACTORESO.damages[DAMAGE_TYPE_MAGIC] = 0
+    FACTORESO.damages[DAMAGE_TYPE_NONE] = 0
+    FACTORESO.damages[DAMAGE_TYPE_OBLIVION] = 0
+    FACTORESO.damages[DAMAGE_TYPE_PHYSICAL] = 0
+    FACTORESO.damages[DAMAGE_TYPE_POISON] = 0
+    FACTORESO.damages[DAMAGE_TYPE_SHOCK] = 0
 end
 
 function FACTORESO.OnAddOnLoaded(event, addonName)
@@ -13,14 +30,18 @@ function FACTORESO.OnAddOnLoaded(event, addonName)
     end
 end
 
---[[
-//pseudo code for damage type tracker
-function FACTORESO. EVENT COMBAT EVENT
-    if (target is me) then
-        damagetypearray[damagetype] = damagedone
+
+function FACTORESO.OnCombat(eventCode, result, isError, abilityName, abilityGraphic, 
+abilityActionSlotType, sourceName, sourceType, targetName, targetType, hitValue, 
+powerType, damageType, log, sourceUnitId, targetUnitId, abilityId)
+
+    if targetName ~= nil and zo_strformat("<<1>>", targetName) == FACTORESO.playerName 
+    and result == ACTION_RESULT_DAMAGE and damageType ~= nil and hitValue ~= nil then
+        FACTORESO.damages[damageType] = FACTORESO.damages[damageType] + hitValue
+        --d(zo_strformat("i took <<1>> damage of damagetype=<<2>>. total=<<3>>", 
+        --  hitValue, damageType, FACTORESO.damages[damageType]))
     end
 end
-]]--
 
 function FACTORESO.ShowMain()
     SCENE_MANAGER:ToggleTopLevel(FACTORESO_Main)
