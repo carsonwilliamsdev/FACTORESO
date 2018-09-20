@@ -25,6 +25,9 @@
                     <AnchorFill/>
                     <Edge edgeSize="1"/>
                 </Backdrop>
+                <Label name="FACTORESO_MainLabel" color="FFFFFF"  width="200" height="25" font="ZoFontWinH1">
+                    <Anchor point="1" relativePoint="1" relativeTo="$(parent)" offsetY="6"/>
+                </Label>
             </Controls>
         </TopLevelControl>
     </Controls>

@@ -3,7 +3,7 @@
 ## Description: my personal addon, use at own risk.
 ## APIVersion: 100024; Wolfhunter
 ## SavedVariables: FACTORESOSavedVariables
-## Version: 0.3
+## Version: 0.4
 
 FACTORESO.xml
 FACTORESO.lua
